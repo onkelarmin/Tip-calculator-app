@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <img src="./assets/images/logo.svg" alt="" class="logo" />
+    <div class="tip-calculator">
+      <form class="tip-form" novalidate>
+        <p class="visually-hidden">
+          Please enter the amount of the bill, the number of people, select one
+          of the given tip percentages or alternatively enter a custom
+          percentage and hit enter
+        </p>
+        <div class="form-group">
+          <div class="label-wrapper">
+            <label for="bill">Bill</label>
+            <p class="error error--bill hidden"></p>
+          </div>
+          <div class="input-wrapper input-wrapper--bill">
+            <input
+              type="number"
+              name="bill"
+              id="bill"
+              min="0"
+              placeholder="0"
+            />
+          </div>
+        </div>
+        <div class="form-group-tip">
+          <div class="label-wrapper">
+            <p>Select Tip %</p>
+            <p class="error error--tip hidden"></p>
+          </div>
+          <button class="btn" type="button" data-value="5">5%</button>
+          <button class="btn" type="button" data-value="10">10%</button>
+          <button class="btn" type="button" data-value="15">15%</button>
+          <button class="btn" type="button" data-value="25">25%</button>
+          <button class="btn" type="button" data-value="50">50%</button>
+          <label class="visually-hidden" for="custom-percent">Custom</label>
+          <input
+            type="number"
+            name="tip"
+            id="tip"
+            min="0"
+            max="100"
+            placeholder="Custom"
+          />
+        </div>
+        <div class="form-group">
+          <div class="label-wrapper">
+            <label for="people">Number of People</label>
+            <p class="error error--people hidden"></p>
+          </div>
+          <div class="input-wrapper input-wrapper--people">
+            <input
+              type="number"
+              name="people"
+              id="people"
+              min="0"
+              placeholder="0"
+            />
+          </div>
+        </div>
+        <button class="hidden" type="submit"></button>
+      </form>
+      <div class="tip-results">
+        <div class="result-wrapper">
+          <p>Tip Amount<br /><span>/ person</span></p>
+          <p class="result" id="tip-per-person">$0.00</p>
+        </div>
+        <div class="result-wrapper">
+          <p>Total<br /><span>/ person</span></p>
+          <p class="result" id="total-per-person">$0.00</p>
+        </div>
+        <button type="reset" class="btn" disabled id="reset">Reset</button>
+      </div>
+    </div>
+  </body>
+</html>

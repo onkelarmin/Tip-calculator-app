@@ -1,0 +1,360 @@
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 700;
+  src: local('Space Mono'),
+    url(./assets/fonts/SpaceMono-Bold.woff2) format('woff2');
+}
+
+:root {
+  --fs-300: 0.8125rem;
+  --fs-400: 1rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.5rem;
+  --fs-700: 2rem;
+
+  --clr-primary-300: hsla(172, 61%, 77%, 1);
+  --clr-primary-400: hsla(172, 67%, 45%, 1);
+  --clr-primary-500: hsla(183, 78%, 24%, 1);
+  --clr-primary-700: hsla(183, 100%, 15%, 1);
+
+  --clr-neutral-100: hsla(0, 0%, 100%, 1);
+  --clr-neutral-300: hsla(185, 38%, 97%, 1);
+  --clr-neutral-350: hsla(183, 15%, 56%, 1);
+  --clr-neutral-400: hsla(186, 14%, 43%, 1);
+  --clr-neutral-450: hsla(180, 18%, 40%, 1);
+
+  --clr-bg: hsla(185, 41%, 84%, 1);
+
+  --clr-error: hsla(13, 70%, 60%, 1);
+
+  --br-small: 0.3125rem;
+  --br-medium: 0.9375rem;
+  --br-large: 1.5625rem;
+}
+
+@media (width > 40em) {
+  :root {
+    --fs-700: 3rem;
+  }
+}
+
+/* Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Remove Input field arrows */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* General styles */
+
+body {
+  font-family: 'Space Mono';
+  font-weight: 700;
+  font-size: var(--fs-400);
+  color: var(--clr-neutral-400);
+  background-color: var(--clr-bg);
+}
+
+.btn {
+  height: 3rem;
+
+  border: none;
+  border-radius: var(--br-small);
+  cursor: pointer;
+}
+
+.btn:is(:hover, :focus) {
+  background-color: var(--clr-primary-300);
+  color: var(--clr-primary-700);
+}
+
+/* Utility classes */
+
+.hidden {
+  display: none;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Tip form */
+
+.logo {
+  width: 5.4165rem;
+  margin-block: 3.12rem 2.55rem;
+  margin-inline: auto;
+}
+
+.tip-calculator {
+  display: grid;
+  gap: 2rem;
+  max-width: 57.5rem;
+
+  background-color: var(--clr-neutral-100);
+  border-radius: var(--br-large) var(--br-large) 0 0;
+
+  padding: 2rem;
+  margin-inline: auto;
+}
+
+.tip-form > * + * {
+  margin-top: 2rem;
+}
+
+/* Select tip */
+
+.form-group-tip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.form-group-tip .label-wrapper {
+  grid-column: 1 / -1;
+}
+
+.form-group-tip button {
+  font-size: var(--fs-600);
+  background-color: var(--clr-primary-700);
+  color: var(--clr-neutral-100);
+}
+
+.form-group-tip button.selected {
+  background-color: var(--clr-primary-400);
+  color: var(--clr-primary-700);
+}
+
+.form-group-tip #tip {
+  margin: 0;
+}
+
+/* Number inputs */
+
+.label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tip-form input[type='number'] {
+  width: 100%;
+
+  font-size: var(--fs-600);
+  background-color: var(--clr-neutral-300);
+  color: var(--clr-primary-700);
+  border-radius: var(--br-small);
+  border: 0;
+  text-align: end;
+  caret-color: var(--clr-primary-400);
+
+  padding-block: 0.38rem;
+  padding-inline-end: 1.09rem;
+  margin-top: 0.38rem;
+}
+
+.tip-form input[type='number']:focus {
+  outline: 2px solid var(--clr-primary-400);
+}
+
+.tip-form input[type='number'].invalid {
+  outline: 2px solid var(--clr-error);
+}
+
+.error {
+  color: var(--clr-error);
+  text-align: end;
+}
+
+.form-group-tip #custom-percent::placeholder {
+  color: var(--clr-neutral-450);
+  opacity: 1;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper::before {
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+}
+
+.input-wrapper--bill::before {
+  content: url(./assets/images/icon-dollar.svg);
+  left: 1.2rem;
+}
+
+.input-wrapper--people::before {
+  content: url(./assets/images/icon-person.svg);
+  left: 1.06rem;
+}
+
+@media (width > 40em) {
+  body {
+    padding-inline: 1.5rem;
+  }
+
+  .logo {
+    margin-block: 10.19rem 5.49rem;
+  }
+
+  .tip-calculator {
+    border-radius: var(--br-large);
+
+    padding: 2rem 2rem 2rem 3rem;
+    margin-bottom: 15rem;
+  }
+
+  .tip-form > * + * {
+    margin-top: 2.5rem;
+  }
+
+  .form-group-tip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width > 55em) {
+  .tip-calculator {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Tip results */
+
+.tip-results {
+  display: grid;
+  align-items: start;
+  width: min(100%, 35rem);
+
+  background-color: var(--clr-primary-700);
+  color: var(--clr-neutral-100);
+  border-radius: var(--br-medium);
+
+  padding: 2.31rem 1.37rem 1.5rem 1.5rem;
+  margin-inline: auto;
+}
+
+.result-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-wrapper + .result-wrapper {
+  margin-top: 1.25rem;
+}
+
+.result-wrapper span {
+  font-size: var(--fs-300);
+  color: var(--clr-neutral-350);
+}
+
+.result-wrapper .result {
+  font-size: var(--fs-700);
+  color: var(--clr-primary-400);
+}
+
+.tip-results button {
+  align-self: end;
+  width: 100%;
+
+  font-size: var(--fs-500);
+  background-color: var(--clr-primary-400);
+  color: var(--clr-primary-700);
+  text-transform: uppercase;
+
+  margin-top: 2rem;
+}
+
+.tip-results button[disabled] {
+  background-color: var(--clr-primary-500);
+  cursor: default;
+}
+
+@media (width > 40em) {
+  .tip-results {
+    padding: 2.5rem;
+  }
+
+  .result-wrapper + .result-wrapper {
+    margin-top: 1.5rem;
+  }
+}
