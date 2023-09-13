@@ -355,6 +355,6 @@ body {
   }
 
   .result-wrapper + .result-wrapper {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 }
