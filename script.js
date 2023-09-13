@@ -3,7 +3,6 @@ const form = document.querySelector('.tip-form')
 const tipFormGroup = form.querySelector('.form-group-tip')
 
 const billInput = form.querySelector('#bill')
-
 const peopleInput = form.querySelector('#people')
 
 const customTipInput = form.querySelector('#tip')
